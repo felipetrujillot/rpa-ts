@@ -193,7 +193,7 @@ const loginForm = async () => {
   cursor: pointer;
 }
 .login-submit:hover:not(:disabled) {
-  background: #0027d9;
+  background: #c21e0f;
 }
 .login-submit:disabled {
   opacity: 0.7;

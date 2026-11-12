@@ -250,7 +250,7 @@ const timezones = [
   font-size: 13px;
 }
 .schedule-editor :where(input, select):focus-visible {
-  outline: 3px solid #002eff;
+  outline: 3px solid #c21e0f;
   outline-offset: 3px;
 }
 .schedule-editor :disabled {
@@ -285,7 +285,7 @@ const timezones = [
   width: 16px;
   height: 16px;
   padding: 0;
-  accent-color: #002eff;
+  accent-color: #c21e0f;
 }
 .schedule-preview {
   border-top: 1px solid #e9edf5;

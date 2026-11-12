@@ -88,7 +88,7 @@ useHead({ title: "Orquestador | RPA" });
   font-display: swap;
 }
 .orchestrator-landing {
-  --rpats-blue: #002eff;
+  --rpats-blue: #c21e0f;
   --rpats-ink: #071e60;
   --rpats-soft: #f3f5ff;
   --rpats-border: #dce2f3;

@@ -10,7 +10,7 @@
   font-size: 13px;
 }
 .agent-back:hover {
-  color: #002eff;
+  color: #c21e0f;
 }
 .agent-heading {
   align-items: center;
@@ -30,7 +30,7 @@
   border: 1px solid #dce3f0;
   background: #fff;
   border-radius: 15px;
-  color: #002eff;
+  color: #c21e0f;
 }
 .agent-title-line {
   display: flex;
@@ -143,7 +143,7 @@
 }
 .agent-review-check input {
   margin-top: 3px;
-  accent-color: #002eff;
+  accent-color: #c21e0f;
   width: 15px;
   height: 15px;
   flex-shrink: 0;
@@ -165,7 +165,7 @@
   margin-left: auto;
 }
 .agent-pair-icon {
-  color: #002eff;
+  color: #c21e0f;
   flex-shrink: 0;
 }
 .agent-tabs {
@@ -193,8 +193,8 @@
   color: #606d87;
 }
 .agent-tab[data-state="active"] {
-  border-bottom-color: #002eff;
-  color: #002eff;
+  border-bottom-color: #c21e0f;
+  color: #c21e0f;
   background: transparent;
   box-shadow: none;
 }
@@ -253,7 +253,7 @@
   overflow-wrap: anywhere;
 }
 .agent-flow-name:hover {
-  color: #002eff;
+  color: #c21e0f;
   text-decoration: underline;
 }
 .agent-flow-actions {
@@ -392,7 +392,7 @@
   color: #606d87;
 }
 .agent-queue-list a:hover {
-  color: #002eff;
+  color: #c21e0f;
 }
 .agent-reservation {
   padding: 14px 0 0;
@@ -423,7 +423,7 @@
 .agent-reservation-dot {
   width: 6px;
   height: 6px;
-  background: #002eff;
+  background: #c21e0f;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -735,7 +735,7 @@
   font-size: 12px;
 }
 .agent-assignment-form a {
-  color: #002eff;
+  color: #c21e0f;
   text-decoration: underline;
 }
 .agent-dialog-actions {
@@ -747,7 +747,7 @@
   margin-top: 8px;
 }
 .agent-dialog :where(button, a, input, select):focus-visible {
-  outline: 3px solid #002eff;
+  outline: 3px solid #c21e0f;
   outline-offset: 3px;
 }
 .agent-capture-dialog {

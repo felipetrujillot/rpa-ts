@@ -24,8 +24,8 @@
 }
 .admin-shell {
   --background: #fff;
-  --foreground: #071e60;
-  --primary: #002eff;
+  --foreground: #3c0d00;
+  --primary: #c21e0f;
   --primary-foreground: #fff;
   --card: #fff;
   --card-foreground: #071e60;
@@ -34,8 +34,8 @@
   --border: #dce3f0;
   --input: #cbd4e5;
   --accent: #edf1ff;
-  --accent-foreground: #002eff;
-  --ring: #002eff;
+  --accent-foreground: #c21e0f;
+  --ring: #c21e0f;
   --radius: 0.75rem;
   min-height: 100svh;
   background: #f4f6fb;
@@ -43,7 +43,7 @@
   font-family: Barlow, Arial, sans-serif;
 }
 .admin-shell :where(button, a, input, select):focus-visible {
-  outline: 3px solid #002eff;
+  outline: 3px solid #c21e0f;
   outline-offset: 3px;
 }
 .admin-shell :where(button, select) {
@@ -117,11 +117,11 @@
 }
 .admin-nav-link:hover {
   background: #f4f6fb;
-  color: #002eff;
+  color: #c21e0f;
 }
 .admin-nav-link.is-active {
   color: #fff;
-  background: #002eff;
+  background: #c21e0f;
 }
 .admin-account-trigger {
   display: flex;
@@ -152,7 +152,7 @@
   height: 35px;
   border-radius: 50%;
   background: #edf1ff;
-  color: #002eff;
+  color: #c21e0f;
   font-size: 13px;
   font-weight: 600;
   flex-shrink: 0;
@@ -188,7 +188,7 @@
   font-size: 14px;
 }
 .admin-account-menu a:focus-visible {
-  outline: 3px solid #002eff;
+  outline: 3px solid #c21e0f;
   outline-offset: -3px;
 }
 .admin-content {
@@ -252,7 +252,7 @@
   font-weight: 600;
 }
 .admin-total {
-  color: #002eff;
+  color: #c21e0f;
   background: #edf1ff;
   border-radius: 5px;
   padding: 2px 8px;
@@ -290,7 +290,7 @@
   outline: none;
 }
 .admin-search:focus-within {
-  outline: 2px solid #002eff;
+  outline: 2px solid #c21e0f;
   outline-offset: 2px;
 }
 .admin-search input:focus-visible {
@@ -318,7 +318,7 @@
   align-items: center;
   gap: 5px;
   font-size: 12px;
-  color: #002eff;
+  color: #c21e0f;
   padding: 8px;
 }
 .admin-result-count {
@@ -361,7 +361,7 @@
   width: 36px;
   height: 36px;
   border-radius: 9px;
-  color: #002eff;
+  color: #c21e0f;
   background: #edf1ff;
   flex-shrink: 0;
 }
@@ -400,7 +400,7 @@
   background: #eaf6ef;
 }
 .admin-state[data-state="ejecutando"] {
-  color: #002eff;
+  color: #c21e0f;
   background: #edf1ff;
 }
 .admin-state[data-state="pendiente"],

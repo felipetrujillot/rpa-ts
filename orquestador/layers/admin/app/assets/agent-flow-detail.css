@@ -10,7 +10,7 @@
   font-size: 13px;
 }
 .flow-back:hover {
-  color: #002eff;
+  color: #c21e0f;
 }
 .flow-identity {
   display: flex;
@@ -24,7 +24,7 @@
   width: 60px;
   height: 60px;
   flex-shrink: 0;
-  color: #002eff;
+  color: #c21e0f;
   background: #fff;
   border: 1px solid #dce3f0;
   border-radius: 15px;
@@ -156,7 +156,7 @@
   background: #edf1ff;
 }
 .flow-history :deep(.flow-run-row.is-selected td:first-child) {
-  box-shadow: inset 3px 0 #002eff;
+  box-shadow: inset 3px 0 #c21e0f;
 }
 .flow-run-name {
   font-size: 13px;
@@ -165,7 +165,7 @@
   white-space: nowrap;
 }
 .flow-run-name:hover {
-  color: #002eff;
+  color: #c21e0f;
   text-decoration: underline;
 }
 .flow-row-secondary {
@@ -212,7 +212,7 @@
   background: #fff0f1;
 }
 .flow-run-state[data-state="running"] {
-  color: #002eff;
+  color: #c21e0f;
   background: #e4eaff;
 }
 .flow-run-state[data-state="queued"],
@@ -341,7 +341,7 @@
   scroll-margin-top: 22px;
 }
 .flow-inspector:focus-visible {
-  outline: 3px solid #002eff;
+  outline: 3px solid #c21e0f;
   outline-offset: 4px;
 }
 .flow-run-overview {
@@ -566,7 +566,7 @@
     min-width: 0;
   }
   .flow-history :deep(.flow-run-row.is-selected) {
-    box-shadow: inset 3px 0 #002eff;
+    box-shadow: inset 3px 0 #c21e0f;
   }
   .flow-history :deep(.flow-run-row.is-selected td:first-child) {
     box-shadow: none;
