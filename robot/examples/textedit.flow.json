@@ -1,0 +1,137 @@
+{
+  "kind": "rpa.workflow",
+  "schemaVersion": "2.0.0",
+  "workflow": {
+    "id": "cua-textedit",
+    "name": "CUA: escribir y comprobar TextEdit",
+    "nodes": [
+      {
+        "id": "start",
+        "name": "Inicio",
+        "type": "rpa.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          40,
+          160
+        ],
+        "parameters": {}
+      },
+      {
+        "id": "type",
+        "name": "type",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          300,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.text.type",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "role": "AXTextArea",
+            "text": {
+              "$ref": "input.text"
+            }
+          }
+        }
+      },
+      {
+        "id": "verify",
+        "name": "verify",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          560,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.window.assert",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "role": "AXTextArea",
+            "expected": {
+              "$ref": "input.text"
+            }
+          }
+        }
+      },
+      {
+        "id": "save",
+        "name": "save",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          820,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.key.press",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "key": "s",
+            "modifiers": [
+              "cmd"
+            ],
+            "deliveryMode": "foreground"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Inicio": {
+        "main": [
+          [
+            {
+              "node": "type",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "type": {
+        "main": [
+          [
+            {
+              "node": "verify",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "verify": {
+        "main": [
+          [
+            {
+              "node": "save",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "variables": {},
+    "settings": {
+      "executionOrder": "fifo",
+      "maxNodeExecutions": 1000
+    }
+  }
+}

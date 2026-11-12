@@ -1,0 +1,340 @@
+.run-evidence {
+  border-top: 1px solid #dce3f0;
+  padding: 20px 22px 24px;
+  min-width: 0;
+}
+.evidence-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.evidence-heading h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.evidence-heading p {
+  font-size: 11px;
+  color: #606d87;
+  margin-top: 5px;
+}
+.evidence-heading button {
+  height: 32px;
+  width: 32px;
+  color: #606d87;
+  flex-shrink: 0;
+}
+.evidence-error {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #a62335;
+  margin-top: 15px;
+  overflow-wrap: anywhere;
+}
+.evidence-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  border-radius: 8px;
+  background: #f7f9fc;
+  padding: 28px 20px;
+  text-align: center;
+  color: #8794ad;
+  margin-top: 20px;
+}
+.evidence-empty strong {
+  font-size: 13px;
+  font-weight: 500;
+  color: #53627f;
+}
+.evidence-empty p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #606d87;
+  max-width: 32ch;
+}
+.evidence-nodes {
+  padding-top: 24px;
+}
+.evidence-node {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 23px;
+}
+.evidence-node:not(:last-child)::before {
+  content: "";
+  width: 1px;
+  position: absolute;
+  left: 10px;
+  top: 23px;
+  bottom: 0;
+  background: #dce3f0;
+}
+.evidence-node:last-child {
+  padding-bottom: 0;
+}
+.evidence-node-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  color: #002eff;
+  background: #edf1ff;
+}
+.evidence-node[data-state="success"] .evidence-node-mark {
+  color: #187450;
+  background: #eaf6ef;
+}
+.evidence-node[data-state="failed"] .evidence-node-mark {
+  color: #a62335;
+  background: #fff0f1;
+}
+.evidence-node-content {
+  flex: 1;
+  min-width: 0;
+}
+.evidence-node-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 2px;
+}
+.evidence-node-heading h4 {
+  font-size: 13px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.evidence-node-heading h4 > span {
+  color: #606d87;
+  margin-right: 5px;
+  font-weight: 400;
+}
+.evidence-node-status {
+  font-size: 10px;
+  color: #606d87;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.evidence-node[data-state="failed"] .evidence-node-status {
+  color: #a62335;
+}
+.evidence-node[data-state="running"] .evidence-node-status {
+  color: #002eff;
+}
+.evidence-node-error {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #a62335;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.evidence-json {
+  margin-top: 8px;
+}
+.evidence-json summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #606d87;
+  font-size: 11px;
+}
+.evidence-json[open] > summary {
+  color: #002eff;
+}
+.evidence-json pre {
+  max-height: 280px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #f4f6fb;
+  border: 1px solid #e9edf5;
+  border-radius: 7px;
+  padding: 13px;
+  margin-top: 10px;
+  color: #53627f;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.evidence-flow-output {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #e9edf5;
+}
+.evidence-flow-output summary {
+  color: #071e60;
+  font-size: 12px;
+}
+.evidence-flow-output summary > svg:last-child {
+  margin-left: auto;
+  color: #606d87;
+}
+.evidence-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.evidence-pagination button {
+  font-size: 11px;
+}
+.evidence-artifacts {
+  border-top: 1px solid #e9edf5;
+  padding-top: 20px;
+  margin-top: 22px;
+}
+.evidence-artifacts h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.evidence-artifacts h3 svg {
+  color: #606d87;
+}
+.evidence-artifacts h3 > span {
+  color: #606d87;
+  font-size: 11px;
+  margin-left: auto;
+}
+.evidence-artifact-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 14px;
+}
+.evidence-artifact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #dce3f0;
+  border-radius: 7px;
+  text-align: left;
+  padding: 12px;
+  color: #606d87;
+}
+.evidence-artifact.is-selected,
+.evidence-artifact:hover {
+  border-color: #002eff;
+  background: #edf1ff;
+}
+.evidence-artifact > span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.evidence-artifact strong {
+  font-size: 12px;
+  color: #071e60;
+  font-weight: 500;
+}
+.evidence-artifact span span {
+  font-size: 10px;
+}
+.evidence-image-viewer {
+  margin-top: 14px;
+  border: 1px solid #dce3f0;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.evidence-image-viewer > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: #606d87;
+  border-bottom: 1px solid #e9edf5;
+}
+.evidence-image-viewer button {
+  font-size: 11px;
+  gap: 4px;
+  padding-inline: 6px;
+}
+.evidence-image-viewer > p {
+  padding: 18px;
+  font-size: 12px;
+  margin-top: 0;
+}
+.evidence-image-viewer img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  background: #f4f6fb;
+}
+@media (max-width: 767px) {
+  .run-evidence {
+    padding: 20px 18px;
+  }
+  .evidence-node-heading {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .evidence-node-heading h4 {
+    flex-basis: 100%;
+  }
+  .evidence-artifact {
+    padding: 10px;
+    gap: 8px;
+  }
+}
+.evidence-capture-dialog {
+  width: calc(100vw - 32px);
+  max-width: 1040px;
+  max-height: 90svh;
+  overflow-y: auto;
+  padding: 26px;
+  border: 1px solid #dce3f0;
+  border-radius: 12px;
+  font-family: Barlow, Arial, sans-serif;
+  color: #071e60;
+}
+.evidence-capture-dialog :deep(h2) {
+  padding-right: 30px;
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 5px;
+}
+.evidence-capture-dialog :deep(p) {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.evidence-capture-dialog > img {
+  width: 100%;
+  max-height: 70svh;
+  object-fit: contain;
+  border-radius: 7px;
+  border: 1px solid #dce3f0;
+  background: #f4f6fb;
+}
+.evidence-dialog-close {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  padding: 6px;
+  border-radius: 5px;
+  color: #606d87;
+}
+.evidence-dialog-close:hover {
+  background: #f4f6fb;
+}
+.evidence-dialog-close:focus-visible {
+  outline: 3px solid #002eff;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .evidence-capture-dialog {
+    animation: none !important;
+    transition: none !important;
+  }
+}

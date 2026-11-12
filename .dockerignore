@@ -1,0 +1,16 @@
+node_modules
+**/node_modules
+.git
+.output
+**/.output
+.nuxt
+**/.nuxt
+.nitro
+.data
+**/.data
+.env
+**/.env
+*.log
+.DS_Store
+robot/dist
+robot/out

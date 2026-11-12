@@ -1,0 +1,343 @@
+{
+  "kind": "rpa.workflow",
+  "schemaVersion": "2.0.0",
+  "workflow": {
+    "id": "playwright-google-form-diagnostic",
+    "name": "Playwright Diagnostic - Google to Example Form",
+    "nodes": [
+      {
+        "id": "start",
+        "name": "Inicio",
+        "type": "rpa.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          40,
+          160
+        ],
+        "parameters": {}
+      },
+      {
+        "id": "open-google",
+        "name": "open-google",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          300,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.browser.openTab",
+          "input": {
+            "url": "{{vars.googleUrl}}"
+          }
+        }
+      },
+      {
+        "id": "wait-google-search",
+        "name": "wait-google-search",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          560,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.page.waitForElement",
+          "input": {
+            "selector": "textarea[name='q']",
+            "state": "visible",
+            "timeoutMs": 20000
+          }
+        }
+      },
+      {
+        "id": "type-google-query",
+        "name": "type-google-query",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          820,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.page.type",
+          "input": {
+            "selector": "textarea[name='q']",
+            "text": "{{vars.searchQuery}}",
+            "clearFirst": true,
+            "delayMs": 10
+          }
+        }
+      },
+      {
+        "id": "open-example-form",
+        "name": "open-example-form",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1080,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.browser.openTab",
+          "input": {
+            "url": "{{vars.exampleFormUrl}}"
+          }
+        }
+      },
+      {
+        "id": "wait-example-form",
+        "name": "wait-example-form",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1340,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.page.waitForElement",
+          "input": {
+            "selector": "#my-text-id",
+            "state": "visible",
+            "timeoutMs": 20000
+          }
+        }
+      },
+      {
+        "id": "fill-name-placeholder",
+        "name": "fill-name-placeholder",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1600,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.page.type",
+          "input": {
+            "selector": "#my-text-id",
+            "text": "{{vars.placeholderName}}",
+            "clearFirst": true
+          }
+        }
+      },
+      {
+        "id": "fill-password-placeholder",
+        "name": "fill-password-placeholder",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1860,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.page.type",
+          "input": {
+            "selector": "input[name='my-password']",
+            "text": "{{vars.placeholderPassword}}",
+            "clearFirst": true
+          }
+        }
+      },
+      {
+        "id": "fill-textarea",
+        "name": "fill-textarea",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          2120,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.page.type",
+          "input": {
+            "selector": "textarea[name='my-textarea']",
+            "text": "{{vars.placeholderMessage}}",
+            "clearFirst": true
+          }
+        }
+      },
+      {
+        "id": "fill-placeholder-field",
+        "name": "fill-placeholder-field",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          2380,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.page.type",
+          "input": {
+            "selector": "input[name='my-datalist']",
+            "text": "{{vars.placeholderLookup}}",
+            "clearFirst": true
+          }
+        }
+      },
+      {
+        "id": "submit-example-form",
+        "name": "submit-example-form",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          2640,
+          160
+        ],
+        "parameters": {
+          "actionId": "playwright.page.click",
+          "input": {
+            "selector": "button"
+          }
+        }
+      },
+      {
+        "id": "end",
+        "name": "end",
+        "type": "rpa.end",
+        "typeVersion": 1,
+        "position": [
+          2900,
+          160
+        ],
+        "parameters": {}
+      }
+    ],
+    "connections": {
+      "Inicio": {
+        "main": [
+          [
+            {
+              "node": "open-google",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "open-google": {
+        "main": [
+          [
+            {
+              "node": "wait-google-search",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "wait-google-search": {
+        "main": [
+          [
+            {
+              "node": "type-google-query",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "type-google-query": {
+        "main": [
+          [
+            {
+              "node": "open-example-form",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "open-example-form": {
+        "main": [
+          [
+            {
+              "node": "wait-example-form",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "wait-example-form": {
+        "main": [
+          [
+            {
+              "node": "fill-name-placeholder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "fill-name-placeholder": {
+        "main": [
+          [
+            {
+              "node": "fill-password-placeholder",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "fill-password-placeholder": {
+        "main": [
+          [
+            {
+              "node": "fill-textarea",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "fill-textarea": {
+        "main": [
+          [
+            {
+              "node": "fill-placeholder-field",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "fill-placeholder-field": {
+        "main": [
+          [
+            {
+              "node": "submit-example-form",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "submit-example-form": {
+        "main": [
+          [
+            {
+              "node": "end",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "variables": {
+      "googleUrl": "https://www.google.com/ncr",
+      "exampleFormUrl": "https://www.selenium.dev/selenium/web/web-form.html",
+      "searchQuery": "site:example.com Example Domain",
+      "placeholderName": "Juan Perez",
+      "placeholderPassword": "Password123!",
+      "placeholderMessage": "Diagnostico de automatizacion Playwright",
+      "placeholderLookup": "Seattle"
+    },
+    "settings": {
+      "executionOrder": "fifo",
+      "maxNodeExecutions": 100
+    }
+  }
+}

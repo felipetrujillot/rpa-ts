@@ -1,0 +1,378 @@
+{
+  "kind": "rpa.workflow",
+  "schemaVersion": "2.0.0",
+  "workflow": {
+    "id": "excel-template",
+    "name": "Plantilla Excel → XLSX y PDF",
+    "nodes": [
+      {
+        "id": "start",
+        "name": "Inicio",
+        "type": "rpa.manualTrigger",
+        "typeVersion": 1,
+        "parameters": {},
+        "position": [
+          80,
+          160
+        ]
+      },
+      {
+        "id": "open",
+        "name": "Abrir plantilla",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          300,
+          200
+        ],
+        "sensitiveOutput": false,
+        "parameters": {
+          "actionId": "excel.workbook.open",
+          "input": {
+            "path": {
+              "$ref": "input.templatePath"
+            },
+            "copy": true
+          }
+        }
+      },
+      {
+        "id": "remember",
+        "name": "Guardar ID",
+        "type": "rpa.set",
+        "typeVersion": 1,
+        "position": [
+          550,
+          200
+        ],
+        "sensitiveOutput": false,
+        "parameters": {
+          "values": {
+            "workbookId": {
+              "$ref": "last.workbookId"
+            }
+          }
+        }
+      },
+      {
+        "id": "values",
+        "name": "Escribir datos",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          800,
+          200
+        ],
+        "sensitiveOutput": true,
+        "parameters": {
+          "actionId": "excel.range.writeValues",
+          "input": {
+            "workbookId": {
+              "$ref": "vars.workbookId"
+            },
+            "worksheetId": "Datos",
+            "address": "A2:B3",
+            "values": {
+              "$ref": "input.values"
+            }
+          }
+        }
+      },
+      {
+        "id": "formulas",
+        "name": "Escribir subtotales",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1050,
+          200
+        ],
+        "sensitiveOutput": false,
+        "parameters": {
+          "actionId": "excel.range.writeFormulas",
+          "input": {
+            "workbookId": {
+              "$ref": "vars.workbookId"
+            },
+            "worksheetId": "Datos",
+            "address": "C2:C3",
+            "formulas": [
+              [
+                "=A2*B2"
+              ],
+              [
+                "=A3*B3"
+              ]
+            ],
+            "syntax": "A1-invariant"
+          }
+        }
+      },
+      {
+        "id": "calculate",
+        "name": "Recalcular",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1300,
+          200
+        ],
+        "sensitiveOutput": false,
+        "parameters": {
+          "actionId": "excel.workbook.calculate",
+          "input": {
+            "workbookId": {
+              "$ref": "vars.workbookId"
+            }
+          }
+        }
+      },
+      {
+        "id": "read",
+        "name": "Leer total",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1550,
+          200
+        ],
+        "sensitiveOutput": true,
+        "parameters": {
+          "actionId": "excel.range.read",
+          "input": {
+            "workbookId": {
+              "$ref": "vars.workbookId"
+            },
+            "worksheetId": "Resumen",
+            "address": "B1"
+          }
+        }
+      },
+      {
+        "id": "total",
+        "name": "Guardar total",
+        "type": "rpa.set",
+        "typeVersion": 1,
+        "position": [
+          1800,
+          200
+        ],
+        "sensitiveOutput": true,
+        "parameters": {
+          "values": {
+            "total": {
+              "$ref": "last.values.0.0"
+            }
+          }
+        }
+      },
+      {
+        "id": "save",
+        "name": "Guardar XLSX",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          2050,
+          200
+        ],
+        "sensitiveOutput": false,
+        "parameters": {
+          "actionId": "excel.workbook.saveAs",
+          "input": {
+            "workbookId": {
+              "$ref": "vars.workbookId"
+            },
+            "path": {
+              "$ref": "input.xlsxPath"
+            },
+            "overwrite": false
+          }
+        }
+      },
+      {
+        "id": "pdf",
+        "name": "Exportar PDF",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          2300,
+          200
+        ],
+        "sensitiveOutput": false,
+        "parameters": {
+          "actionId": "excel.worksheet.exportPdf",
+          "input": {
+            "workbookId": {
+              "$ref": "vars.workbookId"
+            },
+            "worksheetId": "Resumen",
+            "address": "A1:B1",
+            "path": {
+              "$ref": "input.pdfPath"
+            },
+            "overwrite": false,
+            "page": {
+              "orientation": "portrait",
+              "fitToPagesWide": 1,
+              "fitToPagesTall": 1
+            }
+          }
+        }
+      },
+      {
+        "id": "close",
+        "name": "Cerrar libro",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          2550,
+          200
+        ],
+        "sensitiveOutput": false,
+        "parameters": {
+          "actionId": "excel.workbook.close",
+          "input": {
+            "workbookId": {
+              "$ref": "vars.workbookId"
+            },
+            "saveChanges": false
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Inicio": {
+        "main": [
+          [
+            {
+              "node": "Abrir plantilla",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Abrir plantilla": {
+        "main": [
+          [
+            {
+              "node": "Guardar ID",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Guardar ID": {
+        "main": [
+          [
+            {
+              "node": "Escribir datos",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Escribir datos": {
+        "main": [
+          [
+            {
+              "node": "Escribir subtotales",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Escribir subtotales": {
+        "main": [
+          [
+            {
+              "node": "Recalcular",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Recalcular": {
+        "main": [
+          [
+            {
+              "node": "Leer total",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Leer total": {
+        "main": [
+          [
+            {
+              "node": "Guardar total",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Guardar total": {
+        "main": [
+          [
+            {
+              "node": "Guardar XLSX",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Guardar XLSX": {
+        "main": [
+          [
+            {
+              "node": "Exportar PDF",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Exportar PDF": {
+        "main": [
+          [
+            {
+              "node": "Cerrar libro",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "fifo",
+      "maxNodeExecutions": 1000
+    },
+    "variables": {}
+  },
+  "pluginRequirements": [
+    {
+      "pluginId": "excel",
+      "packageVersion": "0.1.0",
+      "sdkVersion": "1.0.0",
+      "actions": {
+        "excel.workbook.open": "1.0.0",
+        "excel.range.read": "1.0.0",
+        "excel.range.writeValues": "1.0.0",
+        "excel.range.writeFormulas": "1.0.0",
+        "excel.workbook.calculate": "1.0.0",
+        "excel.workbook.saveAs": "1.0.0",
+        "excel.worksheet.exportPdf": "1.0.0",
+        "excel.workbook.close": "1.0.0"
+      }
+    }
+  ]
+}

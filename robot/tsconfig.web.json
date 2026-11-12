@@ -1,0 +1,29 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
+  "include": [
+    "src/renderer/src/env.d.ts",
+    "src/renderer/src/**/*",
+    "src/renderer/src/**/*.vue",
+    "src/preload/*.d.ts",
+    "types/**/*.d.ts",
+    "src/ipc.ts",
+    "src/automation/flow/types.ts",
+    "src/automation/core/types.ts",
+    "src/automation/execution/types.ts",
+    "src/automation/execution/command-admission.ts",
+    "src/automation/execution/report-output.ts",
+    "resources/flows/*.json"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@renderer/*": [
+        "src/renderer/src/*"
+      ],
+      "@/*": [
+        "src/renderer/src/*"
+      ]
+    }
+  }
+}

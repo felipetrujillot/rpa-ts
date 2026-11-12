@@ -1,0 +1,39 @@
+{
+  "name": "rpa",
+  "version": "1.0.0",
+  "description": "TODO",
+  "homepage": "https://github.com/felipetrujillot/rpa-ts#readme",
+  "bugs": {
+    "url": "https://github.com/felipetrujillot/rpa-ts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipetrujillot/rpa-ts.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test --workspace=@rpa/robot",
+    "test:integration": "node scripts/test-integration.mjs",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "pretest": "npm run build --workspace=@rpa/contracts",
+    "pretypecheck": "npm run build --workspace=@rpa/contracts",
+    "test:contracts": "npm run build --workspace=@rpa/contracts && node --test packages/contracts/tests/*.test.cjs",
+    "pretest:integration": "npm run build --workspace=@rpa/contracts"
+  },
+  "workspaces": [
+    "orquestador",
+    "robot",
+    "packages/contracts"
+  ],
+  "allowScripts": {
+    "esbuild@0.18.20": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true,
+    "esbuild@0.21.5": true,
+    "vue-demi@0.14.10": true,
+    "fsevents@2.3.3": true
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "kind": "rpa.workflow",
+  "schemaVersion": "2.0.0",
+  "workflow": {
+    "id": "cua-calculator-macos",
+    "name": "CUA: Calculadora 6 × 7 = 42 (macOS)",
+    "nodes": [
+      {
+        "id": "start",
+        "name": "Inicio",
+        "type": "rpa.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          40,
+          160
+        ],
+        "parameters": {}
+      },
+      {
+        "id": "clear",
+        "name": "clear",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          300,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.element.click",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "label": "All Clear",
+            "role": "AXButton"
+          }
+        }
+      },
+      {
+        "id": "six",
+        "name": "six",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          560,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.element.click",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "label": "6",
+            "role": "AXButton"
+          }
+        }
+      },
+      {
+        "id": "multiply",
+        "name": "multiply",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          820,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.element.click",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "label": "Multiply",
+            "role": "AXButton"
+          }
+        }
+      },
+      {
+        "id": "seven",
+        "name": "seven",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1080,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.element.click",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "label": "7",
+            "role": "AXButton"
+          }
+        }
+      },
+      {
+        "id": "equals",
+        "name": "equals",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1340,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.element.click",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "label": "Equals",
+            "role": "AXButton"
+          }
+        }
+      },
+      {
+        "id": "verify",
+        "name": "verify",
+        "type": "rpa.action",
+        "typeVersion": 1,
+        "position": [
+          1600,
+          160
+        ],
+        "parameters": {
+          "actionId": "cua.window.assertVisualText",
+          "input": {
+            "pid": {
+              "$ref": "input.pid"
+            },
+            "windowId": {
+              "$ref": "input.windowId"
+            },
+            "expected": "42",
+            "minimumY": 0.6
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Inicio": {
+        "main": [
+          [
+            {
+              "node": "clear",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "clear": {
+        "main": [
+          [
+            {
+              "node": "six",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "six": {
+        "main": [
+          [
+            {
+              "node": "multiply",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "multiply": {
+        "main": [
+          [
+            {
+              "node": "seven",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "seven": {
+        "main": [
+          [
+            {
+              "node": "equals",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "equals": {
+        "main": [
+          [
+            {
+              "node": "verify",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "variables": {},
+    "settings": {
+      "executionOrder": "fifo",
+      "maxNodeExecutions": 1000
+    }
+  }
+}
